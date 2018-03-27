@@ -131,11 +131,23 @@ function addHttpIfNoProtocol(url) {
   }
 }
 
-chrome.tabs.onUpdated.addListener(checkForValidUrl);
 
-chrome.extension.onMessage.addListener(function(request) {
-  chrome.tabs.query({active:true, currentWindow: true},function(tabs){
+function fansha() {
 
+  var r = {url: "fanshawedev.prod.acquia-sites.com", openInNewTab: true};
+  openInNewEnv(r);
+
+}
+
+
+
+
+ function openInNewEnv(request) {
+ 
+  chrome.tabs.query({active:true, currentWindow: true}, function(tabs) {
+console.log(tabs);
+console.log('brad');
+console.log(request);
     // update current URL to use host, domain, port, start of path of the selected environment.
     var uri = new Uri(tabs[0].url);
     var requestUrl = addHttpIfNoProtocol(request.url);
@@ -167,5 +179,17 @@ chrome.extension.onMessage.addListener(function(request) {
     }
 
   });
+}
+
+chrome.tabs.onUpdated.addListener(checkForValidUrl);
+
+chrome.extension.onMessage.addListener( function (request) { 
+  openInNewEnv(request);
+});
+
+chrome.commands.onCommand.addListener( function(command) {
+    if(command === "fansha"){
+       fansha();
+    }
 });
 

@@ -3,7 +3,8 @@ var app = angular.module('angOptions', []);
 
 app.controller('ProjectsCtrl', ['$rootScope', '$scope', function($rootScope, $scope) {
 	var data = localStorage['domainSwitcher'];
-	if(data != null) {
+
+	if(data != null & data != '') {
 		$scope.projects = JSON.parse(data);
 	} else {
 		$scope.projects = [];
@@ -32,6 +33,7 @@ app.controller('ProjectsCtrl', ['$rootScope', '$scope', function($rootScope, $sc
 		$('#save-success').fadeIn().delay(1000).fadeOut();
 	};
 
+
 	$scope.editName = function(project){
 		project.editMode = true;
 	};
@@ -49,5 +51,28 @@ app.controller('ProjectsCtrl', ['$rootScope', '$scope', function($rootScope, $sc
 			});
 		});
 	};
+
+
+	$scope.importSettings = function() {
+		if( $scope.importjson.length > 5 ){
+	   localStorage["domainSwitcher"] = JSON.parse($scope.importjson).domainSwitcher;
+
+	}
+
+
+	}
+
+	$scope.exportSettings = function() {
+
+	    var result = JSON.stringify(localStorage);
+
+	    // Save as file
+	    var url = 'data:application/json;base64,' + btoa(result);
+	    chrome.downloads.download({
+	        url: url,
+	        filename: 'filename_of_exported_file.json'
+	    });
+
+	}
 
 }]);

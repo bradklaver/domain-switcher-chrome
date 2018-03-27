@@ -1,6 +1,6 @@
 {
-    "name": "__MSG_appName__",
-    "version": "0.6.1",
+    "name": "D2",
+    "version": "0.6.2",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "icons": {
@@ -15,6 +15,24 @@
             "scripts/background.js"
         ]
     },
+	"commands": {
+	  "_execute_page_action": {
+		"suggested_key": {
+		  "default": "Ctrl+Shift+E",
+		  "windows": "Alt+Shift+P",
+		  "mac": "Alt+Shift+P"
+		}
+	  },
+      "fansha": {
+        "suggested_key": {
+          "windows": "Alt+S",
+          "mac": "Command+Shift+Y",
+          "chromeos": "Ctrl+Shift+U",
+          "linux": "Ctrl+Shift+J"
+        },
+        "description": "Fansha"
+      }
+	},
     "page_action": {
         "default_icon": {
             "19": "images/icon-19.png",
@@ -25,6 +43,8 @@
     },
     "options_page": "options.html",
     "permissions": [
-        "tabs"
+        "tabs",
+        "downloads",
+        "storage"
     ]
 }

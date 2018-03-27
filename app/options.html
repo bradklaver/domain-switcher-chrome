@@ -85,7 +85,25 @@
             <span class="alert alert-success alert-small is-hidden" id="save-success">Save successful</span>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" ng-click="exportSettings()" role="button">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Export
+            </button>
+            
+        </div>
+    </div>
 
+
+        <div class="row">
+        <div class="col-md-12">
+          <input type="text" id="importjson" class="form-control" placeholder="Eg: localhost:3000"  ng-model="importjson">
+            <button type="button" class="btn btn-primary" ng-click="importSettings()" role="button">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;&nbsp;Import
+            </button>
+
+        </div>
+    </div>
 
 </section>
 
