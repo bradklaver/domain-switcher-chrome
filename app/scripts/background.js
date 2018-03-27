@@ -139,6 +139,21 @@ function fansha() {
 
 }
 
+function openEnv(env_no) {
+  
+  chrome.tabs.query({active:true, currentWindow: true}, function(tabs) {
+    var data =localStorage.domainSwitcher;
+    if(!data) {
+      return false; // no projects started
+    }
+    var projects = JSON.parse(data);
+
+    var envs = getEnvsForCurrentUrl(projects, tabs[0].url);
+    var request = envs[env_no];
+    request.openInNewTab = true;
+    openInNewEnv(request);
+  });
+}
 
 
 
@@ -188,8 +203,17 @@ chrome.extension.onMessage.addListener( function (request) {
 });
 
 chrome.commands.onCommand.addListener( function(command) {
-    if(command === "fansha"){
-       fansha();
+    if(command === "opendev"){
+      openEnv(1);
+    }
+    if(command === "opentest"){
+      openEnv(2);
+    }
+    if(command === "openprod"){
+      openEnv(3);
+    }
+    if(command === "openlocal"){
+      openEnv(0);
     }
 });
 

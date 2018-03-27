@@ -16,22 +16,50 @@
         ]
     },
 	"commands": {
-	  "_execute_page_action": {
+	/*  "_execute_page_action": {
 		"suggested_key": {
 		  "default": "Ctrl+Shift+E",
 		  "windows": "Alt+Shift+P",
 		  "mac": "Alt+Shift+P"
 		}
-	  },
-      "fansha": {
+	  },*/
+      "opendev": {
         "suggested_key": {
-          "windows": "Alt+S",
-          "mac": "Command+Shift+Y",
+          "windows": "Alt+Shift+1",
+          "mac": "Command+Shift+1",
           "chromeos": "Ctrl+Shift+U",
           "linux": "Ctrl+Shift+J"
         },
-        "description": "Fansha"
+        "description": "Open Dev Site"
+      },
+     "opentest": {
+        "suggested_key": {
+          "windows": "Alt+Shift+2",
+          "mac": "Command+Shift+2",
+          "chromeos": "Ctrl+Shift+U",
+          "linux": "Ctrl+Shift+J"
+        },
+        "description": "Open Test Site"
+      },
+     "openprod": {
+        "suggested_key": {
+          "windows": "Alt+Shift+3",
+          "mac": "Command+Shift+3",
+          "chromeos": "Ctrl+Shift+U",
+          "linux": "Ctrl+Shift+J"
+        },
+        "description": "Open Live Site"
+      },
+     "openlocal": {
+        "suggested_key": {
+          "windows": "Alt+Shift+4",
+          "mac": "Command+Shift+4",
+          "chromeos": "Ctrl+Shift+U",
+          "linux": "Ctrl+Shift+J"
+        },
+        "description": "Open Local Site"
       }
+
 	},
     "page_action": {
         "default_icon": {
