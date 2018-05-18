@@ -132,12 +132,7 @@ function addHttpIfNoProtocol(url) {
 }
 
 
-function fansha() {
 
-  var r = {url: "fanshawedev.prod.acquia-sites.com", openInNewTab: true};
-  openInNewEnv(r);
-
-}
 
 function openEnv(env_no) {
   
@@ -202,6 +197,37 @@ chrome.extension.onMessage.addListener( function (request) {
   openInNewEnv(request);
 });
 
+
+function gotoLogin() {
+ 
+  chrome.tabs.query({active:true, currentWindow: true}, function(tabs) {
+console.log(tabs);
+console.log('brad');
+
+    // update current URL to use host, domain, port, start of path of the selected environment.
+    var uri = new Uri(tabs[0].url);
+    var currUriEntry = getCurrentUrlEntry(tabs[0].url);
+
+
+    // update uri to use start of path of selected ENV - if path in ENV url
+    var currentPath = uri.path();
+    if(currUriEntry.path() !== '') {
+      currentPath = uri.path().replace(currUriEntry.path(), '');
+    }
+
+    console.log('updating to', uri.toString(), tabs);
+	chrome.tabs.query({active: true, currentWindow:true}, function(activeTabs) {
+		chrome.tabs.create({
+		  url: currUriEntry.uriParts.source + "user",
+		  index: (activeTabs.length > 0 && activeTabs[0].index + 1) || null
+		});
+	});
+
+
+  });
+}
+
+
 chrome.commands.onCommand.addListener( function(command) {
     if(command === "opendev"){
       openEnv(1);
@@ -215,5 +241,9 @@ chrome.commands.onCommand.addListener( function(command) {
     if(command === "openlocal"){
       openEnv(0);
     }
+	if(command === "login"){
+      gotoLogin();
+    }
+	
 });
 

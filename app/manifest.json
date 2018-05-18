@@ -58,7 +58,10 @@
           "linux": "Ctrl+Shift+J"
         },
         "description": "Open Local Site"
-      }
+      },
+	  "login": {
+		"description": "Go to the login page for this domain"
+	  }
 
 	},
     "page_action": {
